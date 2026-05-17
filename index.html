@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Meta Tags -->
+    <title>Tax Wallah | Premium GST, ITR & Accounting Services</title>
+    <meta name="description" content="Fast, secure and affordable GST Registration, ITR Filing, and Accounting services for Indian businesses. Start your compliance today.">
+    <meta name="keywords" content="GST Registration, ITR Filing, MSME, Tally, Tax Wallah, Accounting Services India">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tax Wallah | Professional Tax & Accounting">
+    <meta property="og:description" content="GST, ITR & Accounting made simple. Online, Secure, and Fast. Starting at ₹499.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind & Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #0f172a; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #FACC15 100%); }
+        .text-gold { color: #D4AF37; }
+        
+        .hero-bg {
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.05), transparent),
+                        #0f172a;
+        }
+
+        .glow-button {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* FIXED LOADER CSS */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            visibility: visible;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #1e293b;
+            border-top: 4px solid #D4AF37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .feedback-slide { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .feedback-slide.active { display: block; }
+        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2rem; line-height: 1.2; }
+        }
+    </style>
+</head>
+<body class="text-slate-200">
+
+    <!-- LOADER (With ID for JS targeting) -->
+    <div id="loader">
+        <div class="flex flex-col items-center gap-3">
+            <div class="spinner"></div>
+            <span class="text-gold font-bold tracking-widest text-sm">TAX WALLAH</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full z-50 glass px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+            <div class="text-xl md:text-2xl font-bold tracking-tighter text-white flex items-center gap-2">
+                <div class="w-7 h-7 gold-gradient rounded flex items-center justify-center text-black text-[10px] font-black">TW</div>
+                TAX<span class="text-gold">WALLAH</span>
+            </div>
+        </div>
+        
+        <nav class="hidden md:flex space-x-6 font-medium text-xs uppercase tracking-wider">
+            <a href="#services" class="hover:text-gold transition">Services</a>
+            <a href="#why-us" class="hover:text-gold transition">Why Us</a>
+            <a href="#faq" class="hover:text-gold transition">FAQ</a>
+        </nav>
+
+        <button onclick="toggleMenu()" class="md:hidden text-white p-2">
+            <i data-lucide="menu" id="menu-icon"></i>
+        </button>
+
+        <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe services ki details chahiye." 
+           class="hidden md:flex gold-gradient text-black px-5 py-2 rounded-full font-bold text-xs items-center gap-2 glow-button">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+        </a>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#0f172a] hidden flex-col items-center justify-center space-y-8 text-xl font-semibold">
+        <button onclick="toggleMenu()" class="absolute top-5 right-5 text-white"><i data-lucide="x"></i></button>
+        <a href="#services" onclick="toggleMenu()" class="hover:text-gold">Services</a>
+        <a href="#why-us" onclick="toggleMenu()" class="hover:text-gold">Why Us</a>
+        <a href="#faq" onclick="toggleMenu()" class="hover:text-gold">FAQ</a>
+        <a href="https://wa.me/917088075694" onclick="toggleMenu()" class="gold-gradient text-black px-8 py-3 rounded-full text-lg font-bold">WhatsApp Now</a>
+    </div>
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-bg relative pt-24 pb-12 md:pt-32 md:pb-20 px-6 text-center overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-[10px] md:text-xs font-bold uppercase mb-6" data-aos="fade-down">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+                </span>
+                Same Day Assistance Available
+            </div>
+
+            <h1 class="hero-title text-3xl md:text-6xl font-bold text-white leading-tight mb-4" data-aos="fade-up">
+                GST, ITR & Accounting <br> 
+                <span class="text-gold">Fast aur Affordable</span>
+            </h1>
+            <p class="text-sm md:text-lg text-slate-400 mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                GST registration se lekar ITR filing tak — sab kuch online, simple aur secure.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-3 justify-center items-center mb-12" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe consultation chahiye." 
+                   class="gold-gradient text-black px-8 py-4 rounded-xl font-bold text-md w-full md:w-auto glow-button flex items-center justify-center gap-2">
+                    <i data-lucide="message-square" class="w-5 h-5"></i> Free WhatsApp Consultation
+                </a>
+                <a href="#services" class="bg-slate-800 text-white px-8 py-4 rounded-xl font-bold text-md w-full md:w-auto border border-slate-700 hover:bg-slate-700 transition flex items-center justify-center gap-2">
+                    Services Dekho <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 md:gap-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex items-center gap-1 text-slate-400 text-[10px] md:text-xs glass px-3 py-1.5 rounded-full"><i data-lucide="lock" class="w-3 h-3 text-gold"></i> Secure Process</div>
+                <div class="flex items-center gap-1 text-slate-400 text-[10px] md:text-xs glass px-3 py-1.5 rounded-full"><i data-lucide="message-circle" class="w-3 h-3 text-gold"></i> WhatsApp Support</div>
+                <div class="flex items-center gap-1 text-slate-400 text-[10px] md:text-xs glass px-3 py-1.5 rounded-full"><i data-lucide="zap" class="w-3 h-3 text-gold"></i> Fast Assistance</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. OUR SPECIALIZED SERVICES SECTION -->
+    <section id="services" class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-4xl font-bold text-white mb-3">Our Specialized Services</h2>
+                <p class="text-slate-400 text-sm">Simple, fast, and professional tax solutions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div class="glass p-5 rounded-2xl flex flex-col relative group hover:border-gold/50 transition-all" data-aos="fade-up">
+                    <div class="absolute top-4 right-4 bg-gold/20 text-gold text-[10px] font-bold px-2 py-1 rounded border border-gold/30">Starting ₹499</div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all"><i data-lucide="file-text"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">GST Registration</h3>
+                    <p class="text-slate-400 text-xs mb-6 flex-grow">Get your GST number quickly with minimal documentation.</p>
+                    <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe GST Registration ke liye help chahiye." class="gold-gradient text-black text-center py-2.5 rounded-lg font-bold text-xs glow-button">Get Started</a>
+                </div>
+
+                <div class="glass p-5 rounded-2xl flex flex-col relative group hover:border-gold/50 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-4 right-4 bg-gold/20 text-gold text-[10px] font-bold px-2 py-1 rounded border border-gold/30">Starting ₹499</div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all"><i data-lucide="refresh-cw"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">GST Returns</h3>
+                    <p class="text-slate-400 text-xs mb-6 flex-grow">Monthly & Quarterly filing to avoid late fees and penalties.</p>
+                    <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe GST Return filing ke liye help chahiye." class="gold-gradient text-black text-center py-2.5 rounded-lg font-bold text-xs glow-button">Get Started</a>
+                </div>
+
+                <div class="glass p-5 rounded-2xl flex flex-col relative group hover:border-gold/50 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-4 right-4 bg-gold/20 text-gold text-[10px] font-bold px-2 py-1 rounded border border-gold/30">Starting ₹499</div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all"><i data-lucide="user-check"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">ITR Filing</h3>
+                    <p class="text-slate-400 text-xs mb-6 flex-grow">Accurate Income Tax filing for freelancers, traders, and salary holders.</p>
+                    <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe ITR filing ke liye help chahiye." class="gold-gradient text-black text-center py-2.5 rounded-lg font-bold text-xs glow-button">Get Started</a>
+                </div>
+
+                <div class="glass p-5 rounded-2xl flex flex-col relative group hover:border-gold/50 transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-4 right-4 bg-gold/20 text-gold text-[10px] font-bold px-2 py-1 rounded border border-gold/30">Starting ₹499</div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all"><i data-lucide="landmark"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">MSME/Udyam</h3>
+                    <p class="text-slate-400 text-xs mb-6 flex-grow">Get government certification for loans and business benefits.</p>
+                    <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe MSME Registration ke liye help chahiye." class="gold-gradient text-black text-center py-2.5 rounded-lg font-bold text-xs glow-button">Get Started</a>
+                </div>
+
+                <div class="glass p-5 rounded-2xl flex flex-col relative group hover:border-gold/50 transition-all" data-aos="fade-up">
+                    <div class="absolute top-4 right-4 bg-slate-700 text-slate-300 text-[10px] font-bold px-2 py-1 rounded border border-slate-600">Custom Pricing</div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all"><i data-lucide="calculator"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Accounting</h3>
+                    <p class="text-slate-400 text-xs mb-6 flex-grow">Daily bookkeeping and professional accounts management.</p>
+                    <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe Accounting help chahiye." class="gold-gradient text-black text-center py-2.5 rounded-lg font-bold text-xs glow-button">Get Started</a>
+                </div>
+
+                <div class="glass p-5 rounded-2xl flex flex-col relative group hover:border-gold/50 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-4 right-4 bg-slate-700 text-slate-300 text-[10px] font-bold px-2 py-1 rounded border border-slate-600">Custom Pricing</div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all"><i data-lucide="cpu"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Tally Support</h3>
+                    <p class="text-slate-400 text-xs mb-6 flex-grow">Expert Tally Prime setup and professional data entry.</p>
+                    <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe Tally support chahiye." class="gold-gradient text-black text-center py-2.5 rounded-lg font-bold text-xs glow-button">Get Started</a>
+                </div>
+
+                <div class="glass p-5 rounded-2xl flex flex-col relative group hover:border-gold/50 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-4 right-4 bg-slate-700 text-slate-300 text-[10px] font-bold px-2 py-1 rounded border border-slate-600">Custom Pricing</div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all"><i data-lucide="layers"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Balance Sheet</h3>
+                    <p class="text-slate-400 text-xs mb-6 flex-grow">Year-end financial finalization and professional balance sheets.</p>
+                    <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe Balance Sheet prepare karwani hai." class="gold-gradient text-black text-center py-2.5 rounded-lg font-bold text-xs glow-button">Get Started</a>
+                </div>
+
+                <div class="glass p-5 rounded-2xl flex flex-col relative group hover:border-gold/50 transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-4 right-4 bg-slate-700 text-slate-300 text-[10px] font-bold px-2 py-1 rounded border border-slate-600">Custom Pricing</div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all"><i data-lucide="alert-circle"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Notice Reply</h3>
+                    <p class="text-slate-400 text-xs mb-6 flex-grow">Professional legal drafting for GST and Income Tax notices.</p>
+                    <a href="https://wa.me/917088075694?text=Hello Tax Wallah, mujhe Notice Reply me help chahiye." class="gold-gradient text-black text-center py-2.5 rounded-lg font-bold text-xs glow-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. WHY TRUST US SECTION -->
+    <section id="why-us" class="py-16 px-6 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Why Businesses Trust Tax Wallah?</h2>
+                <div class="h-1 w-12 gold-gradient mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start" data-aos="fade-up">
+                    <div class="w-10 h-10 shrink-0 gold-gradient rounded-lg flex items-center justify-center text-black"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                    <div><h4 class="font-bold text-white text-sm">Secure Handling</h4><p class="text-xs text-slate-400">Confidential data handling with strict privacy.</p></div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-10 h-10 shrink-0 gold-gradient rounded-lg flex items-center justify-center text-black"><i data-lucide="mouse-pointer-2" class="w-5 h-5"></i></div>
+                    <div><h4 class="font-bold text-white text-sm">100% Online Process</h4><p class="text-xs text-slate-400">Complete all formalities from your home or office.</p></div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-10 h-10 shrink-0 gold-gradient rounded-lg flex items-center justify-center text-black"><i data-lucide="message-circle" class="w-5 h-5"></i></div>
+                    <div><h4 class="font-bold text-white text-sm">Fast WhatsApp Support</h4><p class="text-xs text-slate-400">Get real-time answers to your tax queries.</p></div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start" data-aos="fade-up">
+                    <div class="w-10 h-10 shrink-0 gold-gradient rounded-lg flex items-center justify-center text-black"><i data-lucide="award" class="w-5 h-5"></i></div>
+                    <div><h4 class="font-bold text-white text-sm">Practical Experience</h4><p class="text-xs text-slate-400">Deep expertise in GST, ITR & Accounting.</p></div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-10 h-10 shrink-0 gold-gradient rounded-lg flex items-center justify-center text-black"><i data-lucide="indian-rupee" class="w-5 h-5"></i></div>
+                    <div><h4 class="font-bold text-white text-sm">Affordable Service</h4><p class="text-xs text-slate-400">High-quality professional work at best rates.</p></div>
+                </div>
+                <div class="glass p-6 rounded-2xl flex gap-4 items-start" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-10 h-10 shrink-0 gold-gradient rounded-lg flex items-center justify-center text-black"><i data-lucide="lock" class="w-5 h-5"></i></div>
+                    <div><h4 class="font-bold text-white text-sm">Data Confidentiality</h4><p class="text-xs text-slate-400">Your business info is safe and encrypted.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REMAINING SECTIONS -->
+    <section class="py-16 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+            <h2 class="text-xl font-bold text-white mb-2">Client Feedback</h2>
+            <div class="h-0.5 w-10 gold-gradient mx-auto"></div>
+        </div>
+        <div class="relative h-20 overflow-hidden text-center">
+            <div id="feedback-container">
+                <div class="feedback-slide active text-slate-300 italic text-sm">“Fast GST filing support.”</div>
+                <div class="feedback-slide text-slate-300 italic text-sm">“Online process simple tha.”</div>
+                <div class="feedback-slide text-slate-300 italic text-sm">“Quick MSME registration guidance.”</div>
+                <div class="feedback-slide text-slate-300 italic text-sm">“Affordable aur smooth process.”</div>
+                <div class="feedback-slide text-slate-300 italic text-sm">“WhatsApp support helpful tha.”</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-16 px-6 max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold text-white text-center mb-10">Common Questions</h2>
+        <div class="space-y-4">
+            <details class="glass p-4 rounded-xl cursor-pointer group">
+                <summary class="font-medium text-slate-200 list-none flex justify-between items-center text-sm">
+                    Documents kya lagenge? <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition"></i>
+                </summary>
+                <p class="mt-3 text-slate-400 text-xs leading-relaxed">PAN Card, Aadhaar Card, and Bank Details are mandatory. We will provide a checklist on WhatsApp.</p>
+            </details>
+            <details class="glass p-4 rounded-xl cursor-pointer group">
+                <summary class="font-medium text-slate-200 list-none flex justify-between items-center text-sm">
+                    Online kaam ho jayega? <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition"></i>
+                </summary>
+                <p class="mt-3 text-slate-400 text-xs leading-relaxed">Yes, our entire process is 100% online and paperless.</p>
+            </details>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 px-6 border-t border-slate-800 text-center md:text-left">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="flex flex-col items-center md:items-start">
+                <div class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div class="w-6 h-6 gold-gradient rounded flex items-center justify-center text-black text-[8px] font-black">TW</div>
+                    TAX<span class="text-gold">WALLAH</span>
+                </div>
+                <p class="text-slate-500 text-xs leading-relaxed">Professional accounting assistance for modern Indian businesses. Simple, Fast, and Transparent.</p>
+            </div>
+            <div class="flex flex-col items-center md:items-start">
+                <h4 class="text-white font-semibold mb-4 text-sm">Quick Help</h4>
+                <ul class="text-slate-500 text-xs space-y-2">
+                    <li><a href="https://wa.me/917088075694" class="hover:text-gold transition">WhatsApp Chat</a></li>
+                    <li><a href="mailto:citiannameer@gmail.com" class="hover:text-gold transition">Email Support</a></li>
+                    <li><a href="tel:+917088075694" class="hover:text-gold transition">Call Directly</a></li>
+                </ul>
+            </div>
+            <div class="text-slate-500 text-[10px] leading-relaxed flex flex-col items-center md:items-start">
+                <p class="mb-4">Disclaimer: Tax Wallah provides accounting assistance. Final filing responsibility depends on user-provided documents.</p>
+                <p>&copy; 2024 Tax Wallah. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE BOTTOM BAR -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full z-50 grid grid-cols-2 h-16 bg-slate-900/90 backdrop-blur-lg border-t border-slate-700">
+        <a href="https://wa.me/917088075694" class="flex items-center justify-center gap-2 text-white font-bold border-r border-slate-700 bg-green-600/10">
+            <i data-lucide="message-circle" class="text-green-500 w-5 h-5"></i> WhatsApp
+        </a>
+        <a href="tel:+917088075694" class="flex items-center justify-center gap-2 text-white font-bold bg-gold/10">
+            <i data-lucide="phone" class="text-gold w-5 h-5"></i> Call Now
+        </a>
+    </div>
+
+    <!-- AI ASSISTANT -->
+    <div id="chat-widget" class="fixed bottom-20 right-6 z-50 flex flex-col items-end">
+        <div id="chat-window" class="hidden glass w-72 md:w-80 mb-4 rounded-2xl overflow-hidden flex flex-col max-h-[450px] shadow-2xl">
+            <div class="gold-gradient p-4 text-black font-bold flex justify-between items-center">
+                <span class="flex items-center gap-2 text-xs uppercase tracking-widest"><i data-lucide="bot" class="w-4 h-4"></i> Tax Wallah AI</span>
+                <button onclick="toggleChat()"><i data-lucide="x" class="w-4 h-4"></i></button>
+            </div>
+            <div id="chat-content" class="p-4 overflow-y-auto space-y-4 text-xs h-64 bg-slate-900/50">
+                <div class="bg-slate-800 text-slate-200 p-3 rounded-lg rounded-tl-none">
+                    Namaste 👋 <br>Mai Tax Wallah Assistant hun. <br>Batayiye aapko GST, ITR, MSME ya Accounting me kis help ki zarurat hai?
+                </div>
+                <div id="quick-replies" class="flex flex-wrap gap-2">
+                    <button onclick="botReply('GST Registration')" class="p-2 glass rounded-full text-[10px] hover:text-gold transition">GST Registration</button>
+                    <button onclick="botReply('GST Return')" class="p-2 glass rounded-full text-[10px] hover:text-gold transition">GST Return</button>
+                    <button onclick="botReply('ITR Filing')" class="p-2 glass rounded-full text-[10px] hover:text-gold transition">ITR Filing</button>
+                    <button onclick="botReply('MSME')" class="p-2 glass rounded-full text-[10px] hover:text-gold transition">MSME/Udyam</button>
+                    <button onclick="botReply('Accounting')" class="p-2 glass rounded-full text-[10px] hover:text-gold transition">Accounting</button>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleChat()" class="gold-gradient p-4 rounded-full shadow-xl text-black hover:scale-110 transition">
+            <i data-lucide="message-square" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        /**
+         * 🛠 FIX: LOADING SCREEN LOGIC
+         * Multi-layer fail-safe to ensure loader ALWAYS disappears.
+         */
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 400);
+            }
+        }
+
+        // Layer 1: Disappear when DOM is fully parsed
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(hideLoader, 500); // Give a half second for a premium feel
+        });
+
+        // Layer 2: Disappear when all windows assets are loaded
+        window.addEventListener('load', hideLoader);
+
+        // Layer 3: Nuclear Option - Disappear after 2.5 seconds NO MATTER WHAT
+        setTimeout(hideLoader, 2500);
+
+
+        /** 
+         * 🛠 INITIALIZATION WITH ERROR HANDLING
+         * Wrapped in try-catch to prevent freezing if a library fails to load.
+         */
+        function initApp() {
+            try {
+                lucide.createIcons();
+            } catch (e) { console.error("Lucide Icons failed to load", e); }
+
+            try {
+                AOS.init({ duration: 600, once: true });
+            } catch (e) { console.error("AOS failed to load", e); }
+        }
+        
+        // Run initialization after a tiny delay to ensure DOM is stable
+        setTimeout(initApp, 100);
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.feedback-slide');
+        setInterval(() => {
+            if(slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 3000);
+
+        function toggleChat() { document.getElementById('chat-window').classList.toggle('hidden'); }
+        function botReply(service) {
+            const content = document.getElementById('chat-content');
+            document.getElementById('quick-replies').classList.add('hidden');
+            content.innerHTML += `<div class="bg-gold text-black p-3 rounded-lg rounded-tr-none text-right ml-auto w-fit font-bold">${service}</div>`;
+            
+            const typing = document.createElement('div');
+            typing.className = "text-slate-500 italic text-[10px]";
+            typing.innerText = "AI is thinking...";
+            content.appendChild(typing);
+            content.scrollTop = content.scrollHeight;
+
+            setTimeout(() => {
+                typing.remove();
+                content.innerHTML += `
+                    <div class="bg-slate-800 text-slate-200 p-3 rounded-lg rounded-tl-none">
+                        Sahi choice! ${service} ke liye documents WhatsApp par bhejiye, team aapko guide karegi.
+                        <div class="mt-3">
+                            <a href="https://wa.me/917088075694?text=Hello, mujhe ${service} ki help chahiye" class="gold-gradient text-black px-4 py-2 rounded-lg font-bold inline-block text-[10px]">Continue to WhatsApp</a>
+                        </div>
+                    </div>`;
+                content.scrollTop = content.scrollHeight;
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
